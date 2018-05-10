@@ -21,6 +21,7 @@ else:
 
 random.shuffle(cards)
 with open('data/card_types.csv', 'w') as typefile:
+    writer = csv.writer(typefile, quotechar='^', delimiter=',')
     for i, card_name in enumerate(cards):
         if i%100 == 0:
             print(i)
@@ -31,8 +32,4 @@ with open('data/card_types.csv', 'w') as typefile:
         obj = name_req.json()
         if 'card' in obj:
             card = obj['card']
-            typefile.write('"')
-            typefile.write(card_name)
-            typefile.write('",')
-            typefile.write(card['type'])
-            typefile.write('\n')
+            writer.writerow([card_name, card['type']])
