@@ -6,7 +6,7 @@ import numpy as np
 
 def get_model(name_length=100, classes=3):
     model = Sequential()
-    model.add(Conv1D(64, 3, activation='relu', input_shape=(None, 1, name_length)))
+    model.add(Conv1D(64, 3, activation='relu', input_shape=(name_length, 1)))
     model.add(Conv1D(64, 3, activation='relu'))
     model.add(MaxPooling1D(3))
     model.add(Conv1D(128, 3, activation='relu'))
