@@ -4,8 +4,6 @@ from keras.layers import Dense, Conv1D, MaxPooling1D, GlobalAveragePooling1D
 
 import numpy as np
 
-import characters
-
 def get_model(name_length=100, classes=3):
     model = Sequential()
     model.add(Conv1D(64, 3, activation='relu', input_shape=(None, 1, name_length)))
@@ -23,7 +21,7 @@ def get_model(name_length=100, classes=3):
     return model
 
 def str2arr(s):
-    return np.fromiter(map(characters.char2ind, s.lower()), float)
+    return np.fromiter(map(ord, s.lower()), float)
 
 def predict(model, card_names):
     model.predict()
