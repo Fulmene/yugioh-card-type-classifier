@@ -7,7 +7,7 @@ chars = [
             '4', '5', '6', '7', '8', '9',
         ]
 
-rev_chars = dict((c, i) for i, c in enumerate(chars))
+rev_chars = dict((c, i+1) for i, c in enumerate(chars))
 
 def char2ind(char):
     return rev_chars[char]
