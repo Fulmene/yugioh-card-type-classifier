@@ -4,3 +4,4 @@ A neural network for classifying the card type (monster, spell, trap) of a Yu-Gi
 ## Requirements
 - Keras ^2.1.6
 - Tensorflow ^1.8.0
+- requests ^2.18.4
