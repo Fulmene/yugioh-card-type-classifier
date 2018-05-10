@@ -8,6 +8,7 @@ import characters
 
 def get_model(name_length=100, classes=3):
     model = Sequential()
+    model.add(Embedding(len(characters.chars), 32))
     model.add(Conv1D(64, 3, activation='relu'))
     model.add(Conv1D(64, 3, activation='relu'))
     model.add(MaxPooling1D(3))
