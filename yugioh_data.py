@@ -11,3 +11,5 @@ rev_chars = dict((c, i+1) for i, c in enumerate(chars))
 
 def char2ind(char):
     return rev_chars[char]
+
+types = [ 'monster', 'spell', 'trap' ]

@@ -5,11 +5,11 @@ from keras.preprocessing.sequence import pad_sequences
 
 import numpy as np
 
-import characters
+import yugioh_data
 
 def get_model(name_length=100, classes=3):
     model = Sequential()
-    model.add(Embedding(len(characters.chars) + 1, 32))
+    model.add(Embedding(len(yugioh_data.chars) + 1, 32))
     model.add(Conv1D(64, 3, activation='relu'))
     model.add(Conv1D(64, 3, activation='relu'))
     model.add(MaxPooling1D(3))
@@ -25,7 +25,7 @@ def get_model(name_length=100, classes=3):
     return model
 
 def str2arr(s):
-    return list(map(characters.char2ind, s.lower()))
+    return list(map(yugioh_data.char2ind, s.lower()))
 
 def preprocess_card_names(card_names, name_length=100):
     return np.array(pad_sequences(
