@@ -34,5 +34,10 @@ def preprocess_card_names(card_names, name_length=100):
                padding='post',
                truncating='post'))
 
+def preprocess_data(data):
+    x = preprocess_card_names([d[0] for d in data])
+    y = np.vectorize(yugioh_data.type2ind)([d[1] for d in data])
+    return x, y
+
 def predict(model, card_names):
     model.predict()
