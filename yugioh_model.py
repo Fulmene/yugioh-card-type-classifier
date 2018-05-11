@@ -1,6 +1,6 @@
 import keras.backend as K
 from keras.models import Sequential
-from keras.layers import Embedding, Dense, Conv1D, MaxPooling1D, GlobalAveragePooling1D
+from keras.layers import Embedding, Dense, Dropout, Conv1D, MaxPooling1D, GlobalAveragePooling1D
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
 
@@ -17,10 +17,11 @@ def get_model(name_length=100, classes=3):
     model.add(Conv1D(128, 3, activation='relu'))
     model.add(Conv1D(128, 3, activation='relu'))
     model.add(GlobalAveragePooling1D())
+    model.add(Dropout(0.5))
     model.add(Dense(3, activation='softmax'))
     
     model.compile(loss='categorical_crossentropy',
-        optimizer='rmsprop',
+        optimizer='adam',
         metrics=['accuracy'])
 
     return model
