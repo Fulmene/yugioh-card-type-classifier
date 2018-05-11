@@ -2,6 +2,7 @@ import keras.backend as K
 from keras.models import Sequential
 from keras.layers import Embedding, Dense, Conv1D, MaxPooling1D, GlobalAveragePooling1D
 from keras.preprocessing.sequence import pad_sequences
+from keras.utils import to_categorical
 
 import numpy as np
 
@@ -36,8 +37,8 @@ def preprocess_card_names(card_names, name_length=100):
 
 def preprocess_data(data):
     x = preprocess_card_names([d[0] for d in data])
-    y = np.vectorize(yugioh_data.type2ind)([d[1] for d in data])
+    y = to_categorical(np.vectorize(yugioh_data.type2ind)([d[1] for d in data]), num_classes=3)
     return x, y
 
 def predict(model, card_names):
-    model.predict()
+    return model.predict(preprocess_card_names(card_names))
