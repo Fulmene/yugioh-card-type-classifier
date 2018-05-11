@@ -17,7 +17,12 @@ rev_chars = dict((c, i+1) for i, c in enumerate(chars))
 def char2ind(char):
     return rev_chars[char]
 
-types = [ 'Monster', 'Spell', 'Trap' ]
+card_types = [ 'Monster', 'Spell', 'Trap' ]
+
+rev_card_types = dict((c, i+1) for i, c in enumerate(card_types))
+
+def type2ind(card_type):
+    return rev_card_types[card_type]
 
 def load_data(data_path='data/card_types.csv', train_ratio=0.8, val_ratio=0.1):
     with open(data_path, 'r') as datafile:
