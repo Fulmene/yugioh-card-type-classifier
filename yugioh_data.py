@@ -27,7 +27,7 @@ rev_card_types = dict((c, i) for i, c in enumerate(card_types))
 def type2ind(card_type):
     return rev_card_types[card_type]
 
-def load_data(data_path='data/card_types.csv', train_ratio=0.7, val_ratio=0.1):
+def load_data(data_path='data/card_types.csv', train_ratio=0.8, val_ratio=0.1):
     with open(data_path, 'r') as datafile:
         data_dict = dict(csv.reader(datafile, quotechar='^', delimiter=','))
 
