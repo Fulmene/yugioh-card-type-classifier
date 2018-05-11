@@ -13,7 +13,7 @@ model = yugioh_model.get_model()
 
 weights_path = 'model/weights.h5'
 
-model.fit(x=train_x, y=train_y, batch_size=32, epochs=200, verbose=2,
+model.fit(x=train_x, y=train_y, batch_size=32, epochs=100, verbose=2,
         callbacks=[ModelCheckpoint(weights_path)],
         validation_data=(val_x, val_y))
 
