@@ -8,14 +8,14 @@ import numpy as np
 
 import yugioh_data
 
-def get_model(name_length=100, classes=3):
+def get_model(name_length=60, classes=3):
     model = Sequential()
     model.add(Embedding(len(yugioh_data.chars) + 1, 32))
-    model.add(Conv1D(64, 3, activation='relu'))
-    model.add(Conv1D(64, 3, activation='relu'))
-    model.add(MaxPooling1D(3))
-    model.add(Conv1D(128, 3, activation='relu'))
-    model.add(Conv1D(128, 3, activation='relu'))
+    model.add(Conv1D(64, 7, activation='relu'))
+    model.add(Conv1D(64, 7, activation='relu'))
+    model.add(MaxPooling1D())
+    model.add(Conv1D(128, 7, activation='relu'))
+    model.add(Conv1D(128, 7, activation='relu'))
     model.add(GlobalAveragePooling1D())
     model.add(Dropout(0.5))
     model.add(Dense(3, activation='softmax'))
@@ -29,7 +29,7 @@ def get_model(name_length=100, classes=3):
 def str2arr(s):
     return list(map(yugioh_data.char2ind, s.lower()))
 
-def preprocess_card_names(card_names, name_length=100):
+def preprocess_card_names(card_names, name_length=60):
     return np.array(pad_sequences(
                list(map(str2arr, card_names)),
                maxlen=name_length,
