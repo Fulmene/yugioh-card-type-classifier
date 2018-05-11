@@ -15,11 +15,14 @@ chars = [
 rev_chars = dict((c, i+1) for i, c in enumerate(chars))
 
 def char2ind(char):
-    return rev_chars[char]
+    if char in rev_chars:
+        return rev_chars[char]
+    else:
+        return 0
 
 card_types = [ 'Monster', 'Spell', 'Trap' ]
 
-rev_card_types = dict((c, i+1) for i, c in enumerate(card_types))
+rev_card_types = dict((c, i) for i, c in enumerate(card_types))
 
 def type2ind(card_type):
     return rev_card_types[card_type]
